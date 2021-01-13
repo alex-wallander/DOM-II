@@ -3,17 +3,7 @@ const navButton = document.querySelectorAll('.nav-link');
 const highlight = document.querySelector('h2');
 const source = document.querySelector('p');
 const image = document.querySelectorAll('img');
-const signButton = document.getElementsByClassName('btn');
-
-signButton.addEventListener('focus', (event) =>{
-    event.target.style.background = 'pink';
-    console.log('This is in focus');
-}, true);
-
-signButton.addEventListener('blur', (event)=>{
-    event.target.style.background = '';
-    console.log('This is blurred');
-}, true);
+const logo = document.querySelector('.logo-heading');
 
 navButton.forEach((elem) => {
     elem.addEventListener('click', (event) =>{
@@ -50,15 +40,6 @@ image.forEach((elem) =>{
     });
 })
 
-document.addEventListener('fullscreenchange', (event) =>{
-    if (event.target) {
-        alert('You are entering fullscreen');
-        console.log('This is a test');
-    }else {
-        alert('You are leaving fullscreen');
-    }
-});
-
 image.forEach((elem) =>{
     elem.addEventListener('mouseenter', (event) =>{
         console.log('The mouse has entered the image', event.target);
@@ -75,3 +56,26 @@ image.forEach((elem) =>{
 })
 
 
+window.addEventListener('resize', () =>{
+    console.log(`Window Height: ${window.innerHeight}, Window Width: ${window.innerWidth}`);
+})
+
+window.addEventListener('scroll', (event) =>{
+    console.log('This window is being scrolled', event.target);
+})
+
+window.addEventListener('keyup', (event) =>{
+    document.querySelector('body').style.backgroundColor = "green";
+})
+
+window.addEventListener('load', (event) => {
+    logo.style.color = 'purple';
+    setInterval(function () {
+        let color = logo.style.color;
+        if (color === 'purple') {
+            logo.style.color = 'blue';
+        } else {
+            logo.style.color = 'purple';
+        }
+    }, 500);
+});
